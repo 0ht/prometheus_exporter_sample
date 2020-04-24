@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: exporter-sample
+  namespace: istio-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exporter-sample
+  template:
+    metadata:
+      labels:
+        app: exporter-sample
+    spec:
+      containers:
+      - name: exporter-sample
+        image: ohtom/exporter-sample:0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9080
